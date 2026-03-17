@@ -3,7 +3,7 @@
     <div class=" flex flex-wrap justify-between gap-3 px-5 ">
         <div class=" bg-(--bg-color-card) w-full sm:w-80 lg:w-125 rounded-xl sm:rounded-2xl">
             <div class="w-full ">
-                <img [src]="product.images" alt="room" height="500" class="border">
+                <img [src]="imageBase +'/'+ product.images" [alt]="product.title" height="500" class="border">
             </div>
         </div>
         <div class="bg-(--bg-color-card) flex-1 rounded-xl sm:rounded-2xl">
