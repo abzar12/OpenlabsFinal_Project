@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment';
 import { Api } from '../../services/api/api';
 import { Navbar } from '../../component/navbar/navbar';
 import { CommonModule } from '@angular/common';
@@ -27,6 +28,7 @@ interface Products {
 })
 
 export class ViewProduct implements OnInit {
+  imageBase = environment.IMAGE_PATH
   api = inject(Api)
   slug: any
   router = inject(ActivatedRoute)
