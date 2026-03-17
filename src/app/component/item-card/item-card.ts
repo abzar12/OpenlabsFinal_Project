@@ -1,24 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Api } from '../../services/api/api';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [CommonModule,],
+  imports: [CommonModule, RouterModule],
   templateUrl: './item-card.html',
   styleUrl: './item-card.css',
 })
-export class ItemCard {
+export class ItemCard implements OnInit {
+  api = inject(Api)
+  imageBase = environment.IMAGE_PATH
   cardItems: any[] = [
-    { Product: "room of three chamber color red at alajo ", Price: 8000, Url: "/images/img2.jpg" },
-    { Product: "Room 2", Price: 8000, Promo_Price: 50000 ,Url: "/images/img2.jpg" },
-    { Product: "Room 3", Price: 8000, Url: "/images/img2.jpg" },
-    { Product: "Room 5", Price: 8000, Promo_Price: 0, Url: "/images/img2.jpg" },
-    { Product: "Room 5", Price: 8000, Promo_Price: 50000, Url: "/images/img2.jpg" },
-    { Product: "Room 6", Price: 8000,  Url: "/images/img2.jpg" },
-     { Product: "Room 2", Price: 8000, Promo_Price: 50000 ,Url: "/images/img2.jpg" },
-    { Product: "Room 3", Price: 8000, Url: "/images/img2.jpg" },
-    { Product: "Room 5", Price: 8000, Promo_Price: 0, Url: "/images/img2.jpg" },
-    { Product: "Room 5", Price: 8000, Promo_Price: 50000, Url: "/images/img2.jpg" }
   ]
+  ngOnInit(): void {
+    this.getAllRoom()
+  }
+  getAllRoom(){
+    this.api.getProduct().subscribe({
+      next: (resp: any) => {
+        this.cardItems = resp
+        console.log("all the available room:", resp)
+      },
+      error: (err:any) => {
+        console.log("getting Room Failed :", err)
+      }
+    })
+  }
 }
