@@ -2,26 +2,27 @@
     <div class="rounded-xl bg-(--bg-color-card) ">
         <div class="w-full h-12 rounded-t-xl text-white bg-(--bg-color-primary) text-center content-center"> New Rooms </div>
         <div class="w-full grid gap-3  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 px-3 py-5 h-full">
-            <div class="h-67.5 rounde-2xl rounded-xl shadow-lg" *ngFor="let item of cardItems">
+            <div class="h-67.5 rounde-2xl rounded-xl shadow-lg" *ngFor="let item of cardItems ">
                 <div class=" w-full h-full grid grid-rows-2 overflow-hidden relative">
                     <div class="absolute to-0% right-3  p-2 bg-green-500 rounded-b-sm text-white"
                         *ngIf="item.Promo_Price">P</div>
                     <div class="w-full object-cover ">
-                        <img [src]="item.Url" class="rounded-t-xl h-full w-full" [alt]="item.Url">
+                        <img [src]="item.images" class="rounded-t-xl h-full w-full" [alt]="item.Url">
                     </div>
                     <div class=" relative rounded-b-xl w-full">
                         <div class="w-full px-3 py-2">
-                            <h1 class=" line-clamp-1 mb-1 ">{{item.Product}}</h1>
+                            <h1 class=" line-clamp-1 mb-1 ">{{item.title}}</h1>
                             <p class="font-bold">Price:
-                                <span *ngIf="!item.Promo_Price" class=" font-normal ">{{item.Price}}</span>
-                                <span *ngIf="item.Promo_Price" class="font-normal ">{{item.Promo_Price}}</span> GHS
+                                <span *ngIf="!item.promo_price" class=" font-normal ">{{item.price}}</span>
+                                <span *ngIf="item.promo_price" class="font-normal ">{{item.promo_price}}</span> GHS
                             </p>
                         </div>
                         <div class="" *ngIf="item.Promo_Price && item.Promo_Price !== 0 ">
-                            <p class="text-red-500 font-bold ml-14 line-through">{{item.Price}} GHS</p>
+                            <p class="text-red-500 font-bold ml-14 line-through">{{item.price}} GHS</p>
                         </div>
                         <div class="absolute bottom-2 w-full px-3 text-center ">
                             <button type="button"
+                            [routerLink]="['view-product', item.slug]"
                                 class=" py-2 rounded-lg text-(--bg-color-primary) border border-(--bg-color-primary) w-full hover:text-white hover:bg-(--bg-color-primary) transition-all duration-500 ease-in-out">
                                 Add to Cart
                             </button>
