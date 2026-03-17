@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<app-hero></app-hero>
+<!-- ---------------------------- filter box --------------------------- -->
+<div class="flex gap-5 justify-center w-125 mx-auto px-5">
+    <div class="" *ngFor=" let filter of filters">
+        <div  (click)="filterClicked(filter)" [class]=" filterValues[0].type === filter ? 'bg-(--bg-color-primary) border-2 hover:text-(--bg-color-primary) hover:bg-transparent text-white border-(--bg-color-primary)  py-2 px-5 rounded-[20px] transition duration-500 cursor-pointer' : 'border-2 hover:text-white hover:bg-(--bg-color-primary) text-(--bg-color-primary) border-(--bg-color-primary)  py-2 px-5 rounded-[20px] transition duration-500 cursor-pointer'">
+            <p  class="">{{filter}}</p>
+        </div>
+    </div>
+</div>
+<app-item-card></app-item-card>
+<app-item-card></app-item-card>

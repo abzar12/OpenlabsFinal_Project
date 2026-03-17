@@ -1,0 +1,8 @@
+@reference "tailwindcss";
+
+.container{
+    @apply w-full px-5 
+}
+.container .title{
+    @apply text-center
+}

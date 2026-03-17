@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+:root{
+    --bg-color-primary: rgb(147,51,234);
+    --bg-color-secondary: rgb(192,132,252);
+    --bg-color-card: rgb(255, 255, 255);
+    --btntext-color:rgb(147,51,234);
+    --btntext-color-hover: rgb(255, 255, 255);
+    --text-size: 1rem;
+    --text-size-2: 2rem;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(234, 234, 234);
+}
