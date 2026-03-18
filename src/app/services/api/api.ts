@@ -9,10 +9,12 @@ export class Api {
   baseURL = "http://localhost:8000/sissoko-room/api"
   http = inject(HttpClient)
 
-  getProduct(){
-    return this.http.get(`${this.baseURL}/getproducts`);
+  getProduct(filterValues:any){
+    return this.http.get(`${this.baseURL}/getproducts`, {
+      params: filterValues
+    });
   }
   getProductBySlug(slug:any){
-    return this.http.get(`${this.baseURL}/product/${slug}`)
+    return this.http.get(`${this.baseURL}/product/${slug}/`)
   }
 }
