@@ -33,11 +33,12 @@ export class ViewProduct implements OnInit {
   slug: any
   router = inject(ActivatedRoute)
   product: any = null;
-  is_loading:boolean = true
+  is_loading:boolean = false
   ngOnInit(): void {
     this.viewProduct()
   }
   viewProduct() {
+    this.is_loading = true
     this.slug = this.router.snapshot.paramMap.get('slug')
     console.log(this.slug)
     this.api.getProductBySlug(this.slug).subscribe({
@@ -48,6 +49,8 @@ export class ViewProduct implements OnInit {
       error: (err) => {
         console.log("Getting unique product Failed", err)
       }
+    }).add (() => {
+      this.is_loading = false
     })
   }
 }
