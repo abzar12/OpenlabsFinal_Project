@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from "ngx-owl-carousel-o"
 import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
@@ -9,12 +9,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
-export class Hero {
+export class Hero implements OnInit {
     images = [
     {src: "/images/im1.jpg", alt: "room 1"},
     {src: "/images/img2.jpg", alt: "room 2"},
     {src: "/images/img3.jpg", alt: "room 3"}
   ]
+  ngOnInit(): void {
+    
+  }
   customOptions: OwlOptions = {
     autoplay: true,
     loop: true,
