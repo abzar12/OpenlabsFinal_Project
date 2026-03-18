@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Api } from '../../services/api/api';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
@@ -12,22 +12,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './item-card.css',
 })
 export class ItemCard implements OnInit {
-  api = inject(Api)
   imageBase = environment.IMAGE_PATH
-  cardItems: any[] = [
-  ]
-  ngOnInit(): void {
-    this.getAllRoom()
-  }
-  getAllRoom(){
-    this.api.getProduct().subscribe({
-      next: (resp: any) => {
-        this.cardItems = resp
-        console.log("all the available room:", resp)
-      },
-      error: (err:any) => {
-        console.log("getting Room Failed :", err)
-      }
-    })
-  }
+  @Input () Items:any [] = []
+  @Input () is_loading: boolean = true
+ ngOnInit(): void {
+   
+ }
 }
