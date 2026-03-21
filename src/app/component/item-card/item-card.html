@@ -23,10 +23,10 @@
                             <p class="text-red-500 font-bold ml-14 line-through">{{item.price}} GHS</p>
                         </div>
                         <div class="absolute bottom-2 w-full px-3 text-center ">
-                            <button type="button" [routerLink]="['view-product', item.slug]"
+                            <a [routerLink]="['view-product', item.slug]"
                                 class=" py-2 rounded-lg text-(--bg-color-primary) border border-(--bg-color-primary) w-full hover:text-white hover:bg-(--bg-color-primary) transition-all duration-500 ease-in-out">
                                 Add to Cart
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
