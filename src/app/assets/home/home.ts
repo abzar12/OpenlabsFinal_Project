@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { OnInit, inject } from '@angular/core';
+import { OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { Component } from '@angular/core';
 import { Navbar } from '../../component/navbar/navbar';
 import { Hero } from '../../component/hero/hero';
@@ -13,25 +13,26 @@ import { Api } from '../../services/api/api';
   styleUrl: './home.css',
 })
 export class Home implements OnInit{
+  constructor( private cdr: ChangeDetectorRef){}
   loading = true
   api = inject(Api)
   cardItems: any [] = []
   // ------------filter ------
   filters = ["All", "hotel", "hostel", "asppartment"]
   filterValues = {
-    type: "hotel",
+    type: "All",
     page: 1,
     limit: 50
   }
   filterClicked(filter:string){
     this.filterValues.type = filter,
     this.filterValues.page = 1
-    console.log("filter clicked", this.filterValues)
     this.getAllRoom(this.filterValues)
   }
 
    ngOnInit(): void {
     this.getAllRoom(this.filterValues)
+    console.log("home page rendered")
   }
 
   getAllRoom(filterValues:any) {
@@ -40,12 +41,14 @@ export class Home implements OnInit{
       next: (resp: any) => {
         this.cardItems = resp || [];
         this.loading = false;
-        console.log("all the available room:", resp)
+        // console.log("all the available room:", resp)
+        this.cdr.detectChanges()
       },
       error: (err: any) => {
         console.log("getting Room Failed :", err)
         this.cardItems = [];
         this.loading = false;
+        this.cdr.detectChanges()
       },
     })
   }
