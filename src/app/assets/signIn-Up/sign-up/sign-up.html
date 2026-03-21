@@ -1,0 +1,136 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+
+        <!-- Title -->
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">
+            Create Account
+        </h2>
+
+        <!-- Form -->
+        <form (ngSubmit)="RegistrationFn(signupForm)" #signupForm="ngForm" class="space-y-5">
+
+            <!-- Full Name -->
+            <div class="w-full bg-green-500 text-sm text-white text-center py-3 rounded-lg mb-4" *ngIf="message">
+                <p>{{message}} </p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    UserName
+                </label>
+                <input type="text" name="username" id="username" [(ngModel)]="User.username" required
+                    class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                    placeholder="username" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.username">{{error.username[0]}}
+            </div>
+            <!-- firstName and LastName -->
+            <div class="flex flex-wrap sm:flex-nowrap gap-4 w-full">
+                <div class="w-full">
+                    <label class="block text-sm font-medium  text-gray-600 mb-1">
+                        FirstName
+                    </label>
+                    <input type="text" name="first_name" id="first_name" [(ngModel)]="User.first_name" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="firstname" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.first_name">{{error.first_name[0]}}
+                    </p>
+
+                </div>
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">
+                        LastName
+                    </label>
+                    <input type="text" name="last_name" id="last_name" [(ngModel)]="User.last_name" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="lastname" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.last_name">{{error.last_name[0]}}</p>
+
+                </div>
+
+            </div>
+            <!-- Email -->
+            <div class=" flex flex-wrap sm:flex-nowrap gap-4 w-full">
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">
+                        Email
+                    </label>
+                    <input type="email" name="email" id="email" [(ngModel)]="User.email" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="you@example.com" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.email">{{error.email[0]}}</p>
+
+                </div>
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">
+                        Phone Number
+                    </label>
+                    <input type="text" name="phone_number" id="phone_number" [(ngModel)]="User.phone_number" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="phone number" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.phone_number">
+                        {{error.phone_number[0]}}</p>
+
+                </div>
+            </div>
+            <!-- Localisation -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Localization
+                </label>
+                <input type="text" name="localization" id="localization" [(ngModel)]="User.localization" required
+                    class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                    placeholder="Accra,Caprice" />
+                <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.localization">{{error.localization[0]}}
+                </p>
+            </div>
+            <!-- Password -->
+            <div class="w-full flex flex-wrap sm:flex-nowrap gap-4 ">
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">
+                        Password
+                    </label>
+                    <input type="password" name="password" id="password" [(ngModel)]="User.password" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="••••••••" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.password">{{error.password[0]}}</p>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">
+                        Confirm Password
+                    </label>
+                    <input type="password" name="confirm_password" [(ngModel)]="User.confirm_password"
+                        id="confirm_password" required
+                        class="w-full px-4 py-2 border rounded-lg focus:border-2 focus:border-(--bg-color-secondary) focus:outline-none"
+                        placeholder="••••••••" />
+                    <p class="bg-red-500 text-sm text-white text-center" *ngIf="error.confirm_password">
+                        {{error.confirm_password[0]}}</p>
+
+                </div>
+            </div>
+
+
+            <!-- Terms
+            <div class="flex items-center space-x-2 text-sm">
+                <input type="checkbox" name="terms" required />
+                <span class="text-gray-600">
+                    I agree to the <a href="#" class="text-(--btntext-color) hover:underline">Terms of condition</a>
+                </span>
+            </div> -->
+
+            <!-- Button -->
+            <button type="submit"
+                class="w-full bg-(--bg-color-primary) text-white py-2 rounded-lg hover:bg-(--bg-color-secondary) hover:font-bold transition disabled:opacity-50">
+                Sign Up
+            </button>
+        </form>
+
+        <!-- Login link -->
+        <p class="text-center text-sm text-gray-600 mt-6">
+            Already have an account?
+            <a [routerLink]="['/sign-in']" class="text-(--btntext-color) hover:font-bold hover:underline">
+                Sign in
+            </a>
+        </p>
+    </div>
+</div>
