@@ -17,4 +17,10 @@ export class Api {
   getProductBySlug(slug:any ){
     return this.http.get(`${this.baseURL}/product/${slug}/`)
   }
+  createUser(forms:any){
+    return this.http.post(`${this.baseURL}/customer/signup`, forms)
+  }
+  logInUser(forms:any){
+    return this.http.post(`${this.baseURL}/customer/login`, forms)
+  }
 }
