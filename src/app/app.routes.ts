@@ -2,6 +2,9 @@ import { Routes } from '@angular/router';
 import { Home } from './assets/home/home';
 import { ViewProduct } from './assets/view-product/view-product';
 import { AddProduct } from './assets/add-product/add-product';
+import { SignIn } from './assets/signIn-Up/sign-in/sign-in/sign-in';
+import { title } from 'process';
+import { SignUp } from './assets/signIn-Up/sign-up/sign-up';
 
 
 export const routes: Routes = [
@@ -17,4 +20,16 @@ export const routes: Routes = [
         title: 'Create room | Sissoko-Room',
         description: 'create new room description',
     }},
+    {
+        path:"sign-in", component: SignIn, data: {
+            title: 'Log-in | Sissoko-Room',
+            description: 'Log in to your account and start booking room'
+        }
+    },
+    {
+        path:"sign-up", component: SignUp, data: {
+            title: "Sign-Up | Sissoko-Room",
+            description: "Create an account and start booking room"
+        }
+    }
 ];
