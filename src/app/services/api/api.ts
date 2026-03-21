@@ -14,7 +14,7 @@ export class Api {
       params: filterValues
     });
   }
-  getProductBySlug(slug:any){
+  getProductBySlug(slug:any ){
     return this.http.get(`${this.baseURL}/product/${slug}/`)
   }
 }
