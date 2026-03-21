@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './assets/home/home';
 import { ViewProduct } from './assets/view-product/view-product';
 import { AddProduct } from './assets/add-product/add-product';
-import { SignIn } from './assets/signIn-Up/sign-in/sign-in/sign-in';
+import { SignIn } from './assets/signIn-Up/sign-in/sign-in';
 import { title } from 'process';
 import { SignUp } from './assets/signIn-Up/sign-up/sign-up';
 
