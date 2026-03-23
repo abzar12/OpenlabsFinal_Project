@@ -5,9 +5,10 @@ import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
+  // standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`
+  templateUrl: './app.html',
+  styleUrl: "./app.css"
 })
 export class App {
 

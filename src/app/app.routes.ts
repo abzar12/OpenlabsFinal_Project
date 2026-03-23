@@ -3,7 +3,7 @@ import { Home } from './assets/home/home';
 import { ViewProduct } from './assets/view-product/view-product';
 import { AddProduct } from './assets/add-product/add-product';
 import { SignIn } from './assets/signIn-Up/sign-in/sign-in';
-import { title } from 'process';
+import { CardItems } from './assets/card/cardItems';
 import { SignUp } from './assets/signIn-Up/sign-up/sign-up';
 
 
@@ -31,5 +31,11 @@ export const routes: Routes = [
             title: "Sign-Up | Sissoko-Room",
             description: "Create an account and start booking room"
         }
-    }
+    },
+    {
+        path:"room/card", component: CardItems, data: {
+            title: "Card | Sissoko-Room",
+            description: "list of room booked"
+        }
+    },
 ];
