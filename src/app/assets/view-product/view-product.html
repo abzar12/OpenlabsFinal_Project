@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="w-full ">
+<div class="w-full " *ngIf="!is_loading">
     <div class=" flex flex-wrap sm:grid sm:grid-cols-2 lg:grid-cols-[40%_60%] justify-between gap-3 px-5 mt-5"
         *ngIf="product">
         <div class="w-full max-w-130 rounded-xl sm:rounded-2xl">
@@ -33,9 +33,12 @@
                     Location: <span class="font-extralight text-[1.1rem]">{{product.location}}</span>
                 </p>
                 <div class="text-center my-3">
-                    <button
+                    <button (click)="reservedRoom()" *ngIf="!isAdded(product.uuid)"
                         class="px-5 py-2 border border-(--bg-color-primary) rounded-full hover:bg-(--bg-color-primary) text-(--btntext-color) hover:text-(--btntext-color-hover) transition-all duration-300 ease-in cursor-pointer"
                         type="button">Reserve Now</button>
+                         <button (click)="removeRoom(product.uuid)" *ngIf="isAdded(product.uuid)"
+                        class="px-5 py-2 border border-red-500 rounded-full hover:bg-red-500 text-red-500 hover:text-(--btntext-color-hover) transition-all duration-300 ease-in cursor-pointer"
+                        type="button">Remove Reservation</button>
                 </div>
             </div>
         </div>
@@ -48,7 +51,7 @@
                     <h1 class="text-lg sm:text-xl mb-5 font-bold ">Description</h1>
                     <p class="text-[1.2rem] ml-3 font-[lora]">{{product.description}}</p>
                 </div>
-                <div class="text-left sm:rounded-2xl px-5 py-3" *ngIf="product.amenities">
+                <div class="text-left sm:rounded-2xl px-5 py-3" *ngIf="product.amenities && product.amenities.length > 0">
                     <h1 class="text-lg sm:text-xl mb-5 font-bold ">Amenities</h1>
                     <ul>
                         <li *ngFor="let amenity of product.amenities">{{ amenity }}</li>
@@ -58,10 +61,10 @@
         </div>
     </div>
 </div>
-<!-- <div *ngIf="is_loading">
+<div *ngIf="is_loading">
     <div class="text-center py-20 text-gray-400">
         <div class="animate-spin inline-block w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full mb-4">
         </div>
-        <p>Loading product...</p>
+        <p>loading product...</p>
     </div>
-</div> -->
+</div>
