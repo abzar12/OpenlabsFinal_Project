@@ -9,11 +9,27 @@
                 <button type="button" class=" px-2 border-l-2 h-full"> search</button>
             </div>
         </div>
-        <div class="">
+        <div class="flex gap-3 items-center">
+            <div class="relative mr-3">
+                <button class="flex cursor-pointer" (click)="OnpenDropdown()" *ngIf="user && user.username">
+                    <fa-icon [icon]="faUser" ></fa-icon> {{ user.username }} <fa-icon [icon]="faCaretDown" [ngClass]="['arrowDown', Dropdown ? 'active': '']"></fa-icon>
+                </button>
+                <div [ngClass]="['dropdown', Dropdown ? 'active' : '']">
+                    <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Account</a>
+                    <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Orders</a>
+                    <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200 text-red-500">LogOut</a>
+                </div>
+            </div>
             <nav class="h-full w-full">
                 <ul class="flex justify-center gap-5 items-center w-full h-full">
-                    <li>
-                        <a href="#">Login </a>
+                    <li *ngIf="!user || !user.username">
+                        <a [routerLink]="['/sign-in']" class="px-3 py-1 border border-white rounded-full hover:bg-white hover:text-(--bg-color-primary) transition-all duration-300 ease-in cursor-pointer">Login </a>
+                    </li>
+                    <li class="relative">
+                        <a [routerLink]="['/room/card']" class="px-3 py-1 cursor-pointer"> 
+                            <fa-icon [icon]="cart" class="text-[1.3rem]"></fa-icon> Cart
+                            <p class="rounded-full text-white px-1 bg-red-500 absolute -top-4 left-8 ">{{cardService?.cardLength()}}</p>
+                        </a>
                     </li>
                 </ul>
             </nav>
