@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser,faCaretDown,faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-interface UserProp {
+export interface UserProp {
   id: string,
   username: string,
   firstname: string,
@@ -58,5 +58,8 @@ export class Navbar implements OnInit {
   }
   OnpenDropdown(){
     this.Dropdown = !this.Dropdown
+  }
+  logOut(){
+    this.api.logOut()
   }
 }
