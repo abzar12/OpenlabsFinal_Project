@@ -17,7 +17,7 @@
                 <div [ngClass]="['dropdown', Dropdown ? 'active' : '']">
                     <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Account</a>
                     <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Orders</a>
-                    <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200 text-red-500">LogOut</a>
+                    <a (click)="logOut()" class="block px-3 text-[1rem] cursor-pointer py-2 hover:bg-gray-200 text-red-500">LogOut</a>
                 </div>
             </div>
             <nav class="h-full w-full">
