@@ -24,6 +24,7 @@
   "private": true,
   "packageManager": "npm@10.9.2",
   "dependencies": {
+    "@angular/animations": "^21.1.2",
     "@angular/cdk": "~21.1.2",
     "@angular/common": "^21.1.0",
     "@angular/compiler": "^21.1.0",
@@ -38,6 +39,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "express": "^5.1.0",
     "ngx-owl-carousel-o": "^21.0.0",
+    "ngx-toastr": "^20.0.5",
     "owl.carousel": "^2.3.4",
     "rxjs": "~7.8.0",
     "swiper": "^12.1.0",
