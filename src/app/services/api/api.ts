@@ -34,4 +34,7 @@ export class Api  {
   refreshToken(): Observable<any>{
     return this.http.post(`${this.baseURL}/refreshtk`, {}, {withCredentials: true})
   }
+  checkOut(product:[]){
+    return this.http.post(`${this.baseURL}/checkOut/`, product, {withCredentials:true})
+  }
 }
