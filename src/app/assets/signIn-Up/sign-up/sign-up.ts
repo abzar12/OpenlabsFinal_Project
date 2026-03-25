@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Api } from '../../../services/api/api';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-sign-up',
   imports: [RouterModule, CommonModule ,FormsModule],
@@ -11,10 +12,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './sign-up.css',
 })
 export class SignUp {
-  constructor(private http:HttpClient, private route:Router){}
+  constructor(private http:HttpClient, private route:Router, private toastr: ToastrService){}
   api = inject(Api)
   message:any = ''
-  error:any = {}
+  error: any = ''
   User = {
     username:'',
     first_name: '',
@@ -32,14 +33,29 @@ export class SignUp {
       next: (resp:any)=>{
         console.log(resp)
         this.message = resp.message
-         this.error = {}; 
+        this.error = {}
+        this.toastr.success('Your account has been created successfully.', ' Success', {
+          timeOut:4000,
+          positionClass: "toast-top-right",
+          closeButton: true,
+          progressBar: true,
+          progressAnimation: 'decreasing',
+          tapToDismiss: false
+        })
          setTimeout(() => {
           this.route.navigate(['/sign-in'])
          }, 1800);
       },
       error: (err:any) => {
-        this.error = err.message
-        console.log("Failed to create User", err)
+        this.error = 'Creating account failed', 'Sign-Up Failed'
+        this.toastr.error('Creating account failed', 'Sign-Up Failed', {
+          timeOut:4000,
+          positionClass: "toast-top-center",
+          closeButton: true,
+          progressBar: true,
+          progressAnimation: 'decreasing',
+          tapToDismiss: false
+        })
       }
     })
   }
