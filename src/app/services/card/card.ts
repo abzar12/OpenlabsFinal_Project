@@ -25,9 +25,7 @@ export class Card {
     const itemFound = this.myCard().find(ele => ele.uuid == uuid)
     return itemFound ? itemFound.is_added : false
   }
-
   public cardLength = computed(() => this.myCard().length);
-
   constructor(private route: ActivatedRoute) {
     // Load saved card from localStorage
     if (typeof window !== 'undefined') {
