@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="max-w-5xl mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-6">Cart</h2>
+
+  <div *ngIf="cartItems.length > 0; else emptyCart" class="space-y-4">
+
+    <div *ngFor="let item of cartItems; let i = index"
+      class="flex items-center justify-between bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+
+      <!-- LEFT -->
+      <div class="flex items-center gap-4">
+
+        <!-- Image -->
+        <img [src]="ImgBaseUrl+'/'+item.images" alt="{{ item.title }}"
+          class="w-20 h-20 object-cover rounded-lg border" />
+
+        <!-- Info -->
+        <div>
+          <h3 class="font-semibold text-lg">{{ item.title }}</h3>
+          <p class="text-gray-500 text-sm">GHS{{ item.price }}</p>
+          <p class="text-gray-500 text-sm"> <fa-icon class="text-red-400" [icon]="faLocationDot"></fa-icon> {{
+            item.location }}</p>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="flex items-center gap-4">
+        <!-- Delete -->
+        <button (click)="removeItem(item.uuid)"
+          class="text-red-500 border px-3 rounded-2xl cursor-pointer hover:text-red-700 transition text-xl">
+          remove
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Total -->
+    <div class="mx-auto flex flex-wrap justify-between max-w-100 mt-6 bg-white shadow-md rounded-xl p-3 "
+      *ngIf="cartItems && cartItems.length > 0">
+      <p class="text-xl font-bold">Total: {{ getTotal() }} <span class="text-sm">GHS</span></p>
+      <button type="button" (click)="checkOut()"
+        [ngClass]="['border border-(--bg-color-primary) text-(--bg-color-primary) py-1 px-3 rounded-full hover:bg-(--bg-color-primary) hover:text-white cursor-pointer transition duration-300 ease-in opacity-100', !user ? 'opacity-50' : '']">
+        Check-Out
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty -->
+  <ng-template #emptyCart>
+    <div class="text-center py-20 text-gray-400">
+      <p class="text-lg">Your cart is empty 🛒</p>
+    </div>
+  </ng-template>
+</div>
