@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Api } from '../../services/api/api';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from "@angular/router"
 
 
 @Component({
@@ -17,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './cardItems.css',
 })
 export class CardItems implements OnInit {
-  constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService) { }
+  constructor(private cdr: ChangeDetectorRef, private route: Router, private toastr: ToastrService) { }
   api = inject(Api)
   user: any = null
   ImgBaseUrl = environment.IMAGE_PATH
@@ -47,6 +48,7 @@ export class CardItems implements OnInit {
       if (carts && carts.length > 0 && this.user.id) {
         this.api.checkOut(carts).subscribe({
           next: () => {
+            localStorage.removeItem('myCard') 
             this.toastr.success(`Your reservation request has been sent. You will be contacted via your email or phone number`, 'Reservation Successful', {
               timeOut: 4000,
               positionClass: 'toast-top-right',
@@ -55,6 +57,7 @@ export class CardItems implements OnInit {
               progressAnimation: 'increasing',
               tapToDismiss: false
             });
+            this.route.navigate(['/'])
           },
           error: (err:any) => {
             console.log(err)
