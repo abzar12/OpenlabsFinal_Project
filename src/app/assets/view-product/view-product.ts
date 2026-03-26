@@ -40,15 +40,16 @@ export class ViewProduct implements OnInit {
   is_loading: boolean = false
   ngOnInit(): void {
     this.viewProduct()
+    console.log('view product rendered')
   }
   viewProduct() {
     this.is_loading = true
     this.slug = this.router.snapshot.paramMap.get('slug')
-    console.log("snapshot SLUG got:", this.slug)
+    // console.log("snapshot SLUG got:", this.slug)
     this.api.getProductBySlug(this.slug).subscribe({
       next: (resp: Products | any) => {
         this.product = resp
-        console.log("this is response", resp)
+        // console.log("this is response", resp)
         this.is_loading = false
         this.cdr.detectChanges()
       },
