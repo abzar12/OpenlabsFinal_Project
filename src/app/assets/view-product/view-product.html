@@ -36,7 +36,7 @@
                     <button (click)="reservedRoom()" *ngIf="!isAdded(product.uuid)"
                         class="px-5 py-2 border border-(--bg-color-primary) rounded-full hover:bg-(--bg-color-primary) text-(--btntext-color) hover:text-(--btntext-color-hover) transition-all duration-300 ease-in cursor-pointer"
                         type="button">Reserve Now</button>
-                         <button (click)="removeRoom(product.uuid)" *ngIf="isAdded(product.uuid)"
+                    <button (click)="removeRoom(product.uuid)" *ngIf="isAdded(product.uuid)"
                         class="px-5 py-2 border border-red-500 rounded-full hover:bg-red-500 text-red-500 hover:text-(--btntext-color-hover) transition-all duration-300 ease-in cursor-pointer"
                         type="button">Remove Reservation</button>
                 </div>
@@ -51,11 +51,20 @@
                     <h1 class="text-lg sm:text-xl mb-5 font-bold ">Description</h1>
                     <p class="text-[1.2rem] ml-3 font-[lora]">{{product.description}}</p>
                 </div>
-                <div class="text-left sm:rounded-2xl px-5 py-3" *ngIf="product.amenities && product.amenities.length > 0">
-                    <h1 class="text-lg sm:text-xl mb-5 font-bold ">Amenities</h1>
-                    <ul>
-                        <li *ngFor="let amenity of product.amenities">{{ amenity }}</li>
-                    </ul>
+                <div class="text-left sm:rounded-2xl px-5 py-3 w-full"
+                    *ngIf="product.amenities && product.amenities.length > 0">
+                    <h1 class="text-lg sm:text-xl mb-5 font-bold">Amenities</h1>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <ng-container *ngFor="let amenity of product.amenities">
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white shadow-sm">
+                                <span
+                                    class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-600 text-xs">✓</span>
+                                <span class="sm:text-[1.1rem] font-[lora] text-gray-700">{{ amenity.name || amenity
+                                    }}</span>
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
