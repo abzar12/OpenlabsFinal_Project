@@ -5,6 +5,7 @@ import { AddProduct } from './assets/add-product/add-product';
 import { SignIn } from './assets/signIn-Up/sign-in/sign-in';
 import { CardItems } from './assets/card/cardItems';
 import { SignUp } from './assets/signIn-Up/sign-up/sign-up';
+import { Reserve } from './assets/reserve/reserve';
 
 
 export const routes: Routes = [
@@ -38,4 +39,9 @@ export const routes: Routes = [
             description: "list of room booked"
         }
     },
+    {
+        path:"room/reserved", component: Reserve, data: {
+            title: "Reserved Room | Sissoko-Room"
+        }
+    }
 ];
