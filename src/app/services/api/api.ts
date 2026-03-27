@@ -37,4 +37,7 @@ export class Api  {
   checkOut(product:[]){
     return this.http.post(`${this.baseURL}/checkOut/`, product, {withCredentials:true})
   }
+  getReservedRoom(){
+    return this.http.get(`${this.baseURL}/reservedRoom/`, {withCredentials: true})
+  }
 }
