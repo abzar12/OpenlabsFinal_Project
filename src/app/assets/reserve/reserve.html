@@ -1,31 +1,68 @@
 <app-navbar></app-navbar>
-<div class="w-full px-5">
-    <div class="bg-(--bg-color-primary) rounded-xl shadow-[1px_1px_25px_3px_var(--bg-color-secondary)] mt-5">
-        <div class="">
-            <h1>Reserved Rooms</h1>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <div
+        class="bg-white/80 relative dark:bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg p-6">
+        <div class="mt-4 text-lg absolute top-0 right-3 text-slate-500 dark:text-slate-400">
+            <a href="/" class="text-(--bg-color-secondary) hover:text-(--bg-color-primary)">Continue Booking</a>
         </div>
-        <div class="p-5">
-            <div *ngIf="reservedRooms && reservedRooms.length > 0 ; emptyReserve" class="space-y-4">
+        <div class="mb-6">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100">Reserved Rooms</h1>
+            <p class="text-sm text-slate-500 dark:text-slate-300 mt-2">Your current reservations are shown below.</p>
+        </div>
 
-                <div *ngFor="let item of reservedRooms; let i = index"
-                    class="flex items-center justify-between bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
-                    <!-- LEFT -->
-                    <div class="flex items-center">
-                        <img [src]="item.image" [alt]="item.title" class="w-16 h-16 object-cover rounded-lg">
-                        <div class="ml-4">
-                            <h2 class="text-lg font-bold">{{ item.title }}</h2>
-                            <p class="text-gray-600">{{ item.description }}</p>
+        <ng-container *ngIf="reservedRooms$ | async as items; else loadingTpl">
+            <div *ngIf="items.length > 0; else empty" class="space-y-4">
+                <article *ngFor="let item of items"
+                    class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-4 items-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 sm:p-5 shadow-sm hover:shadow-md transition">
+                    <img [src]="imgBaseUrl + item.room.images" [alt]="item.room.title" loading="lazy"
+                        class="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-lg shadow-sm" />
+
+                    <div class="space-y-2">
+                        <h2 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100">{{
+                            item.room.title }}</h2>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{{ item.room.description }}
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span
+                                class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 font-medium">Order
+                                #{{ item.order.order_number }}</span>
+                            <span class="px-2 py-1 font-medium rounded-full" [ngClass]="{
+                'bg-emerald-100 text-emerald-800': item.order.order_status.toLowerCase() === 'confirmed',
+                'bg-amber-100 text-amber-800': item.order.order_status.toLowerCase() === 'pending',
+                'bg-rose-100 text-rose-800': item.order.order_status.toLowerCase() === 'cancelled',
+                'bg-slate-100 text-slate-700': item.order.order_status.toLowerCase() !== 'confirmed' && item.order.order_status.toLowerCase() !== 'pending' && item.order.order_status.toLowerCase() !== 'cancelled'
+              }">{{ item.order.order_status | titlecase }}</span>
                         </div>
                     </div>
-                    <!-- RIGHT -->
-                    <div class="flex items-center">
-                        <span class="text-lg font-bold">${{ item.price | number:'1.2-2' }}</span>
+
+                    <div class="text-right space-y-2">
+                        <span class="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100">${{
+                            item.order.total_amount | number:'1.2-2' }}</span>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">{{ item.order.payment_status |
+                            titlecase }}</p>
                     </div>
+                </article>
+            </div>
+        </ng-container>
+
+        <ng-template #loadingTpl>
+            <div class="flex items-center justify-center py-14">
+                <div class="text-center">
+                    <div
+                        class="h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto">
+                    </div>
+                    <p class="mt-3 text-sm text-slate-500 dark:text-slate-300">Loading reserved rooms...</p>
                 </div>
             </div>
-            <div class="" #emptyReserve>
-                <p class="text-gray-500">No reserved rooms found.</p>
+        </ng-template>
+
+        <ng-template #empty>
+            <div class="flex flex-col items-center justify-center py-14 text-center">
+                <span class="text-4xl">🛏️</span>
+                <h3 class="mt-3 text-lg font-semibold text-slate-900 dark:text-slate-100">No reserved rooms found</h3>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">You currently have no reservations. Browse
+                    rooms and book your next stay.</p>
             </div>
-        </div>
+        </ng-template>
     </div>
 </div>
