@@ -1,5 +1,16 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { Api } from '../services/api/api';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  return true;
+  const api = inject(Api)
+  const router = inject(Router)
+
+  // const user = api.user
+  // if(user){
+  //   return true
+  // }else{
+  //   return false;
+  // }
+  return true 
 };

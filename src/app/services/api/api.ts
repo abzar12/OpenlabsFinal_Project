@@ -25,7 +25,7 @@ export class Api  {
       withCredentials:true
     })
   }
-  logOut(): Observable<any>{
+  logOut(){
     return this.http.post(`${this.baseURL}/logout`, {}, {withCredentials:true})
   }
   getUser(){
