@@ -18,7 +18,7 @@ export class Home implements OnInit{
   api = inject(Api)
   cardItems: any [] = []
   // ------------filter ------
-  filters = ["All", "hotel", "hostel", "asppartment"]
+  filters = ["All", "hotel", "hostel", "serviced apartment", "guesthouse", 'resort']
   filterValues = {
     type: "All",
     page: 1,
