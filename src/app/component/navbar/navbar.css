@@ -1,31 +1,37 @@
 .dropdown {
-    /* @apply w-32 z-50 absolute top-10 -left-10 bg-white text-(--bg-color-primary) shadow-lg */
-    width: 130px;
     position: absolute;
-    height: 0;
-    top: 40px;
-    left: -25px;
-    background-color: rgba(255, 255, 255, 0.793);
-    color: var(--bg-color-secondary);
+    top: 100%;
+    right: 0;
+    width: 180px;
+    margin-top: 0.5rem;
+    background-color: white;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 45px -18px rgba(15, 23, 42, 0.5);
     opacity: 0;
-    border-radius: 0px 0px 5px 5px ;
-    transition: all 0.2s ease;
-    z-index: 0;
-}
-.arrowDown{
-    font-size: 1rem;
-    transition: transform 0.3s ease-in;
-}
-.arrowDown.active{
-    transform: rotate(180deg)
-}
-.dropdown a:hover {
-    background-color: var(--bg-color-secondary);
-    color: white;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 50;
+    overflow: hidden;
 }
 
 .dropdown.active {
-    height: 130px;
-    z-index: 100;
     opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.arrowDown {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.arrowDown.active {
+    transform: rotate(180deg);
+}
+
+.dropdown a:hover {
+    background-color: #f1f5f9;
 }
