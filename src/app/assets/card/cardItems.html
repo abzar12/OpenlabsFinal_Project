@@ -3,10 +3,10 @@
   <h2 class="text-2xl font-bold mb-6">Cart</h2>
 
   <div *ngIf="cartItems.length > 0; else emptyCart" class="space-y-4">
-
     <div *ngFor="let item of cartItems; let i = index"
-      class="flex items-center justify-between bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+      class=" relative flex items-center justify-between bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
       <!-- LEFT -->
+
       <div class="flex items-center gap-4">
 
         <!-- Image -->
@@ -48,6 +48,9 @@
   <ng-template #emptyCart>
     <div class="text-center py-20 text-gray-400">
       <p class="text-lg">Your cart is empty 🛒</p>
+      <div class="mt-4 text-lg">
+        <a href="/" class="text-(--bg-color-secondary) hover:text-(--bg-color-primary)">Continue Booking</a>
+      </div>
     </div>
   </ng-template>
 </div>
