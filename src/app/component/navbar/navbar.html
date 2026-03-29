@@ -1,34 +1,49 @@
 <div class="w-full mx-auto h-15 bg-(--bg-color-primary) shadow-[1px_1px_25px_3px_var(--bg-color-secondary)]">
     <div class=" flex justify-between items-center h-full mx-3 sm:mx-5 text-white">
-        <div class="">
-            <h1>sissoko-room</h1>
+        <div class="logo">
+            <a href="/" class="text-[1.3rem] font-bold">sissoko-room</a>
         </div>
-        <div class="">
-            <div class="flex gap-2 items-center border-2 border-white rounded-md pl-3 py-1 w-50  sm:w-87.5 bg-transparent text-white">
+        <!-- <div class="">
+            <div
+                class="flex gap-2 items-center border-2 border-white rounded-md pl-3 py-1 w-50  sm:w-87.5 bg-transparent text-white">
                 <input type="text" placeholder="Search" class="focus:outline-none border-0 w-full ">
                 <button type="button" class=" px-2 border-l-2 h-full"> search</button>
             </div>
-        </div>
-        <div class="flex gap-3 items-center">
-            <div class="relative mr-3">
-                <button class="flex cursor-pointer" (click)="OnpenDropdown()" *ngIf="user && user.username">
-                    <fa-icon [icon]="faUser" ></fa-icon> {{ user.username }} <fa-icon [icon]="faCaretDown" [ngClass]="['arrowDown', Dropdown ? 'active': '']"></fa-icon>
+        </div> -->
+        <div class="flex items-center gap-4">
+            <div class="relative">
+                <button
+                    class="flex items-center gap-2 px-4 py-2 border border-white/30 rounded-full bg-white/10 hover:bg-white/20 transition"
+                    (click)="OnpenDropdown()" *ngIf="user$ | async as user ">
+                    <fa-icon [icon]="faUser" class="text-base"></fa-icon>
+                    <span class="hidden sm:inline font-medium">{{ user.username }}</span>
+                    <fa-icon [icon]="faCaretDown" [ngClass]="['arrowDown', Dropdown ? 'active': '']"
+                        class="text-sm"></fa-icon>
                 </button>
-                <div [ngClass]="['dropdown', Dropdown ? 'active' : '']">
-                    <a [routerLink]="['/']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Account</a>
-                    <a [routerLink]="['/room/reserved']" class="block px-3 text-[1rem] py-2 hover:bg-gray-200">Reserve</a>
-                    <a (click)="logOut()" class="block px-3 text-[1rem] cursor-pointer py-2 hover:bg-gray-200 text-red-500">LogOut</a>
+
+                <div [ngClass]="['dropdown', Dropdown ? 'active' : '']"
+                    class="absolute right-0 mt-2 w-44 rounded-xl bg-white text-slate-900 shadow-xl border border-slate-200 z-50 overflow-hidden">
+                    <a [routerLink]="['/']" class="block px-3 py-2 text-sm hover:bg-slate-100">Account</a>
+                    <a [routerLink]="['/room/reserved']" class="block px-3 py-2 text-sm hover:bg-slate-100">Reserve</a>
+                    <a (click)="logOut()"
+                        class="block px-3 py-2 text-sm text-rose-600 hover:bg-slate-100 cursor-pointer">Log Out</a>
                 </div>
             </div>
-            <nav class="h-full w-full">
-                <ul class="flex justify-center gap-5 items-center w-full h-full">
-                    <li *ngIf="!user || !user.username">
-                        <a [routerLink]="['/sign-in']" class="px-3 py-1 border border-white rounded-full hover:bg-white hover:text-(--bg-color-primary) transition-all duration-300 ease-in cursor-pointer">Login </a>
+
+            <nav class="">
+                <ul class="flex items-center gap-3">
+                    <li *ngIf="!(user$ | async)">
+                        <a [routerLink]="['/sign-in']"
+                            class="px-3 py-1 border border-white/40 rounded-full bg-white/10 hover:bg-white/20 transition text-sm">Login</a>
                     </li>
                     <li class="relative">
-                        <a [routerLink]="['/room/card']" class="px-3 py-1 cursor-pointer"> 
-                            <fa-icon [icon]="cart" class="text-[1.3rem]"></fa-icon> Cart
-                            <p class="rounded-full text-white px-1 bg-red-500 absolute -top-4 left-8 ">{{cardService?.cardLength()}}</p>
+                        <a [routerLink]="['/room/card']"
+                            class="flex items-center gap-1 px-3 py-1 border border-white/30 rounded-full bg-white/10 hover:bg-white/20 transition text-sm">
+                            <fa-icon [icon]="cart" class="text-base"></fa-icon>
+                            <span>Cart</span>
+                            <span
+                                class="absolute -top-2 -right-2 inline-flex items-center justify-center h-5 w-5 rounded-full bg-rose-500 text-white text-xs">{{
+                                cardService?.cardLength() }}</span>
                         </a>
                     </li>
                 </ul>
