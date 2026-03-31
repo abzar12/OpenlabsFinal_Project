@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { Navbar } from '../../component/navbar/navbar';
 import { CommonModule } from '@angular/common';
 import { Api } from "../../services/api/api";
-import footer
+import { Footer } from '../../component/footer/footer';
 import { environment } from '../../../environments/environment';
 import { map, catchError, of } from 'rxjs';
 interface ReserveRoomProps {
@@ -24,7 +24,7 @@ interface ReserveRoomProps {
 }
 @Component({
   selector: 'app-reserve',
-  imports: [CommonModule, Navbar],
+  imports: [CommonModule, Navbar, Footer],
   templateUrl: './reserve.html',
   styleUrl: './reserve.css',
 })
