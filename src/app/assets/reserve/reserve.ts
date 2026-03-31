@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { Navbar } from '../../component/navbar/navbar';
 import { CommonModule } from '@angular/common';
-import { Api } from "../../services/api/api"
+import { Api } from "../../services/api/api";
+import footer
 import { environment } from '../../../environments/environment';
 import { map, catchError, of } from 'rxjs';
 interface ReserveRoomProps {
