@@ -5,7 +5,7 @@ import { Api } from '../../services/api/api';
 import { Card } from '../../services/card/card';
 import { Navbar } from '../../component/navbar/navbar';
 import { CommonModule } from '@angular/common';
-import { sign } from 'crypto';
+import { Footer } from '../../component/footer/footer';
 
 interface Products {
   id: number,
@@ -24,7 +24,7 @@ interface Products {
 @Component({
   standalone: true,
   selector: 'app-view-product',
-  imports: [CommonModule, Navbar],
+  imports: [CommonModule, Navbar, Footer],
   templateUrl: './view-product.html',
   styleUrls: ['./view-product.css'],
 })
