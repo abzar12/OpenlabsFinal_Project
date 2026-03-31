@@ -11,9 +11,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class Hero implements OnInit {
     images = [
-    {src: "/images/im1.jpg", alt: "room 1"},
-    {src: "/images/img2.jpg", alt: "room 2"},
-    {src: "/images/img3.jpg", alt: "room 3"}
+    {src: "/images/hero1.webp", alt: "Luxury hotel room for booking with king bed and modern interior design"},
+    {src: "/images/hero2.webp", alt: "Affordable hotel room booking with comfortable bed and stylish decor"},
+    {src: "/images/hero3.webp", alt: "Relax in a beautifully designed hotel room with premium comfort and city views"}
   ]
   ngOnInit(): void {
     
