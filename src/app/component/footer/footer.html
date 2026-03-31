@@ -1,0 +1,47 @@
+<footer class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-100 py-12">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+            <div class="space-y-3">
+                <h2 class="text-2xl font-bold tracking-tight">Sissoko Room</h2>
+                <p class="text-sm text-slate-400">Modern booking for rooms made easy, safe and stylish.</p>
+                <p class="text-xs text-slate-500">Suite prices, instant confirmation, and premium customer support.</p>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wide text-(--bg-color-primary)">Explore</h3>
+                <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                    <li><a [routerLink]="['/']" class="transition cursor-pointer hover:text-(--bg-color-secondary)">Home</a></li>
+                    <li><a [routerLink]="['/room/reserved']" class="transition cursor-pointer hover:text-(--bg-color-secondary)">Reserve</a></li>
+                    <li><a [routerLink]="['/sign-in']" class="transition cursor-pointer hover:text-(--bg-color-secondary)">Sign In</a></li>
+                    <li><a [routerLink]="['/sign-up']" class="transition cursor-pointer hover:text-(--bg-color-secondary)">Sign Up</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wide text-(--bg-color-primary)">Support</h3>
+                <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                    <li><a href="mailto:support@sissokoroom.com"
+                            class="transition hover:text-(--bg-color-secondary)">support@sissokoroom.com</a></li>
+                    <li><span class="inline-block">+223 (0) 592-233-681</span></li>
+                    <li><span class="text-xs text-slate-500">Mon - Fri, 9am - 8pm</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wide text-(--bg-color-primary)">Follow us</h3>
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <a href="https://twitter.com" target="_blank" rel="noopener"
+                        class="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-200 transition hover:border-(--bg-color-secondary) hover:text-(--bg-color-primary)">Twitter</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener"
+                        class="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-200 transition hover:border-(--bg-color-secondary) hover:text-(--bg-color-primary)">Facebook</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener"
+                        class="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-200 transition hover:border-(--bg-color-secondary) hover:text-(--bg-color-primary)">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+            © {{ currentYear }} Sissoko Room. All rights reserved.
+        </div>
+    </div>
+</footer>
