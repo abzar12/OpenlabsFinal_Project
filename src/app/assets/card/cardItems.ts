@@ -9,11 +9,12 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Api } from '../../services/api/api';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from "@angular/router"
+import { Footer } from '../../component/footer/footer';
 
 
 @Component({
   selector: 'app-cardItems',
-  imports: [CommonModule, Navbar, FontAwesomeModule],
+  imports: [CommonModule, Navbar, FontAwesomeModule, Footer],
   templateUrl: './cardItems.html',
   styleUrl: './cardItems.css',
 })
