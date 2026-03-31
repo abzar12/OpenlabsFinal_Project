@@ -4,11 +4,12 @@ import { Component } from '@angular/core';
 import { Navbar } from '../../component/navbar/navbar';
 import { Hero } from '../../component/hero/hero';
 import { ItemCard } from '../../component/item-card/item-card';
+import { Footer } from '../../component/footer/footer';
 import { Api } from '../../services/api/api';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, Navbar, Hero, ItemCard],
+  imports: [CommonModule, Navbar, Hero, ItemCard, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
