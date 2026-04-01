@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef, computed, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.ts';
 import { Api } from '../../services/api/api';
 import { Card } from '../../services/card/card';
 import { Navbar } from '../../component/navbar/navbar';
