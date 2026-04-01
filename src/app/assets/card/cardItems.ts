@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { Card } from '../../services/card/card';
 import { CommonModule } from '@angular/common';
 import { Navbar } from '../../component/navbar/navbar';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.ts';
 import { CardProduct } from '../../services/card/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
