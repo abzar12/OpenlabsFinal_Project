@@ -3,7 +3,7 @@ import { Navbar } from '../../component/navbar/navbar';
 import { CommonModule } from '@angular/common';
 import { Api } from "../../services/api/api";
 import { Footer } from '../../component/footer/footer';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.ts';
 import { map, catchError, of } from 'rxjs';
 interface ReserveRoomProps {
   id: string,
