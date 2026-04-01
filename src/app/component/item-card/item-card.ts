@@ -3,12 +3,11 @@ import { Api } from '../../services/api/api';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [CommonModule, RouterModule, Footer],
+  imports: [CommonModule, RouterModule],
   templateUrl: './item-card.html',
   styleUrl: './item-card.css',
 })

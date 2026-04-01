@@ -1,6 +1,5 @@
 import { Injectable, signal, computed, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import footer
 
 export interface CardProduct {
   uuid: string;
