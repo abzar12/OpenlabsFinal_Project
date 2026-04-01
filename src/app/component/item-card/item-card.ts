@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Api } from '../../services/api/api';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.ts';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
